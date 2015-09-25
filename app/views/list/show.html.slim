@@ -1,0 +1,8 @@
+table
+  - @resource.cards.each do |c|
+    - query = CardActionQuery.new c
+    tr
+      td = c.name
+      td = c.labels.map { |l| if l.name.empty? then l.color else l.name end }.to_sentence
+      td = query.start_date()
+      td = query.work_time().to_i

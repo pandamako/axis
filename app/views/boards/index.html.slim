@@ -1,0 +1,6 @@
+a href="#{new_board_url 'board[user_id]' => current_user.id}" Добавит доску
+
+ul
+- @collection.each do |board|
+  li
+    a href="#{board_list_index_url board}" = board.name

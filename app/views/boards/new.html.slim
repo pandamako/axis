@@ -1,0 +1,5 @@
+h2 Доступные доски
+= simple_form_for @resource do |f|
+  = f.input :user_id, as: :hidden
+  = f.input :trello_id, collection: @trello_boards, as: :radio_buttons, label: false
+  = f.button :submit
