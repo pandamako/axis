@@ -1,7 +1,8 @@
 FactoryGirl.define do
-  factory :board do
-    user
+  factory :list do
+    board
     name 'test'
     trello_id '234234'
   end
+
 end

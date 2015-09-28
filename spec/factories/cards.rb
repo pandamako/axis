@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :card do
-    board
+    list
     name 'test'
     trello_id '234234'
   end

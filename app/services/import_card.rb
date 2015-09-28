@@ -2,14 +2,22 @@ class ImportCard
   pattr_initialize :board, :trello_card
 
   def call
-    card = import_card
+    list = import_list
+    card = import_card list
     import_actions card
   end
 
-  def import_card
+  def import_list
+    List.find_or_create_by(trello_id: trello_card.list.id) do |l|
+      l.name = trello_card.list.name
+      l.board = @board
+    end
+  end
+
+  def import_card list
     Card.find_or_create_by(trello_id: trello_card.id) do |c|
       c.name = trello_card.name
-      c.board = @board
+      c.list = list
     end
   end
 
