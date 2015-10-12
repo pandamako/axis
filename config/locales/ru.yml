@@ -1,0 +1,7 @@
+ru:
+  time:
+    formats:
+      human: '%d.%m.%Y'
+  date:
+    formats:
+      human: '%d.%m.%Y'

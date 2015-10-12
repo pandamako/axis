@@ -1,8 +1,13 @@
 table
-  - @resource.cards.each do |c|
-    - query = CardActionQuery.new c
+  thead
+    tr
+      th Название
+      th Дата завершения
+      th Неделя
+      th Затрачено, дней
+  - @cards.each do |c|
     tr
       td = c.name
-      td = c.labels.map { |l| if l.name.empty? then l.color else l.name end }.to_sentence
-      td = query.start_date()
-      td = query.work_time().to_i
+      td = l c.stats.last_action.action_at.to_date
+      td = c.stats.last_action.action_at.to_date.cweek
+      td = c.stats.work_days.to_i

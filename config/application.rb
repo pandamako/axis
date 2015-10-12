@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module Axis
   class Application < Rails::Application
     config.time_zone = 'Europe/Moscow'
+    config.i18n.default_locale = :ru
     config.active_record.raise_in_transactional_callbacks = true
     config.generators do |generate|
       generate.fixture_replacement :factory_girl, dir: "spec/factories"

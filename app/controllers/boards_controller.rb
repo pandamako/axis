@@ -25,8 +25,8 @@ class BoardsController < ApplicationController
   end
 
   def lists
-    trello_board = Trello::Board.find @resource.trello_id
-    @lists = trello_board.lists
+    # trello_board = Trello::Board.find @resource.trello_id
+    @lists = @resource.lists
   end
 
   def cards

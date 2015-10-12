@@ -4,17 +4,17 @@ class CardDone
   START_LIST_TRELLO_ID = '554086ff386b5daaceb2191c'
 
   def work_days
-    last_action.action_at - first_action.action_at
+    last_action.action_at.to_date - first_action.action_at.to_date
   end
 
   def last_action
     @last_action ||= card.actions.sort_by(&:action_at)
       .reverse()
-      .find { |a| a.listBefore == DONE_LIST_TRELLO_ID }
+      .find { |a| a.listAfter == DONE_LIST_TRELLO_ID }
   end
 
   def first_action
     card.actions.sort_by(&:action_at)
-    .find { |a| a.listBefore == START_LIST_TRELLO_ID } || card.actions.first
+    .find { |a| a.listAfter == START_LIST_TRELLO_ID } || card.actions.sort_by(&:action_at).first
   end
 end
